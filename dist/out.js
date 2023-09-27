@@ -1,0 +1,1 @@
+(()=>{var t=Array.from(document.getElementsByClassName("w--current"));t.forEach(e=>{e.setAttribute("disabled","true"),e.setAttribute("aria-disabled","true"),e.classList.add("pointer-events-none")});console.log("Hello from VS code.");})();
