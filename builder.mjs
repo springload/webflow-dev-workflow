@@ -1,18 +1,13 @@
 import * as esbuild from "esbuild";
 
-// entryPoints = "client-projects/[current project]/[the file you're working on]"
-// e.g. "client-projects/test-project/index.ts"
-
-// outfile = "client-projects/[current project]/dist/out.js"
-// e.g. "client-projects/test-project/dist/out.js"
+// entryPoints = "client-projects/[your project]/[the file you're working on]"
+// outfile = "client-projects/[your project]/dist/out.js"
 
 const context = await esbuild.context({
-  entryPoints: [
-    "client-projects/test-project/index.ts",
-    // "client-projects/test-project/index.tsx",
-  ],
+  entryPoints: ["client-projects/test-project/index.ts"],
   bundle: true,
   minify: true,
+  sourcemap: true,
   outfile: "client-projects/test-project/dist/out.js",
 });
 

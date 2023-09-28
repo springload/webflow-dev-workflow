@@ -4,4 +4,4 @@ current.forEach((navItem) => {
   navItem.classList.add("pointer-events-none");
 });
 
-console.log("Hello from CDN.");
+console.log("Hello from vs code.");

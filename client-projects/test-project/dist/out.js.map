@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../index.ts"],
+  "sourcesContent": ["const current = Array.from(document.getElementsByClassName(\"w--current\"));\ncurrent.forEach((navItem) => {\n  navItem.setAttribute(\"aria-disabled\", \"true\");\n  navItem.classList.add(\"pointer-events-none\");\n});\n\nconsole.log(\"Hello from vs code.\");\n"],
+  "mappings": "MAAA,IAAMA,EAAU,MAAM,KAAK,SAAS,uBAAuB,YAAY,CAAC,EACxEA,EAAQ,QAASC,GAAY,CAC3BA,EAAQ,aAAa,gBAAiB,MAAM,EAC5CA,EAAQ,UAAU,IAAI,qBAAqB,CAC7C,CAAC,EAED,QAAQ,IAAI,qBAAqB",
+  "names": ["current", "navItem"]
+}
