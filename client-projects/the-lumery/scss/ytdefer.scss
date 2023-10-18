@@ -1,0 +1,15 @@
+.ytdefer {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.video__title,
+.video__title-gradient {
+  pointer-events: none;
+  display: block;
+}
+
+.video__container:has(iframe) :is(.video__title, .video__title-gradient) {
+  display: none;
+}
