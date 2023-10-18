@@ -23,12 +23,12 @@ const getResponseText = async () => {
   return await response.text();
 };
 
-const /*public static void*/ main = async () => {
-    const responseText = await getResponseText();
-    const markup = { __html: responseText };
+const main = async () => {
+  const responseText = await getResponseText();
+  const markup = { __html: responseText };
 
-    const root = createRoot(document.getElementById("react-root"));
-    root.render(<App markup={markup} />);
-  };
+  const root = createRoot(document.getElementById("react-root"));
+  root.render(<App markup={markup} />);
+};
 
 main();

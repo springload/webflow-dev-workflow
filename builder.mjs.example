@@ -7,7 +7,6 @@ import { sassPlugin } from "esbuild-sass-plugin";
 
 const context = await esbuild.context({
   entryPoints: [
-    "client-projects/hunter-lumery/index.ts",
     "client-projects/hunter-lumery/react-component.tsx",
     "client-projects/hunter-lumery/styles.scss"
   ],

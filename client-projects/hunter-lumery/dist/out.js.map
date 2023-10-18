@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../index.ts"],
-  "sourcesContent": ["console.log(\"there's a hunter lumeing over this website\")"],
-  "mappings": "MAAA,QAAQ,IAAI,4CAA4C",
-  "names": []
-}
