@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../styles.scss"],
+  "sourcesContent": ["// .job-listing {\n// }\n\n.job-title {\n  text-align: left;\n  font-family: Metric, sans-serif;\n  font-size: 4rem;\n  font-weight: 700;\n  line-height: 1;\n  text-decoration: none;\n  display: inline-block;\n\n  a {\n    color: unset;\n    text-decoration: unset;\n  }\n}\n\n.job-location {\n  &:after {\n    content: \" →\";\n  }\n\n  color: #191c1d;\n  font-family: Metric, sans-serif;\n  font-size: 1.2rem;\n}\n"],
+  "mappings": "iBAGA,CAAA,UACE,WAAA,KACA,YAAA,MAAA,CAAA,WACA,UAAA,KACA,YAAA,IACA,YAAA,EACA,gBAAA,KACA,QAAA,aAEA,CATF,UASE,EACE,MAAA,MACA,gBAAA,MAIJ,CAAA,aAKE,MAAA,QACA,YAAA,MAAA,CAAA,WACA,UAAA,OANA,CADF,YACE,OACE,QAAA",
+  "names": []
+}

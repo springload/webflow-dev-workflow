@@ -14,7 +14,6 @@ const context = await esbuild.context({
   minify: true,
   sourcemap: true,
   outdir: "client-projects/hunter-lumery/dist",
-  // outfile: "client-projects/hunter-lumery/dist/out.js",
   plugins: [sassPlugin()],
 });
 
