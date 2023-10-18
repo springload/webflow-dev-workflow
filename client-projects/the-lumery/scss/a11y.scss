@@ -1,0 +1,21 @@
+.screenreader-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Hide/Show different things if reduced motion is set in the operating system */
+@media (prefers-reduced-motion) {
+  .reduced-motion {
+    display: revert;
+  }
+  .motion {
+    display: none;
+  }
+}
