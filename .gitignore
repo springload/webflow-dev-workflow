@@ -1,5 +1,4 @@
 .DS_STORE
 node_modules/
 /builder.mjs
-hunter/lumery/dist
-
+client-projects/hunter-lumery/dist
