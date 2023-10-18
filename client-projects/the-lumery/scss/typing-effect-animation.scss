@@ -1,0 +1,32 @@
+.typing__link {
+  .char,
+  .word {
+    display: inline-block;
+  }
+
+  .char,
+  .whitespace {
+    box-shadow: var(--invisible-box-shadow);
+    color: var(--transparent-white);
+    text-decoration: none;
+  }
+
+  &:hover {
+    .char,
+    .whitespace {
+      text-decoration: underline 2px;
+      text-underline-offset: 0.1em;
+    }
+  }
+}
+
+.typing__text {
+  --transparent-white: hsla(0, 0%, 100%, 0);
+  --invisible-box-shadow: 2px 0 0 var(--transparent-white);
+  box-shadow: var(--invisible-box-shadow);
+
+  .reduced-motion > & {
+    text-decoration: underline 2px;
+    text-underline-offset: 0.1em;
+  }
+}
