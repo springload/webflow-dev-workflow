@@ -30,7 +30,7 @@ This creates a minified out.js file, serves at port 8000, and watches for change
 
 In Webflow, go to site-settings >> custom code >> footer code.
 
-Add ```src=“http://localhost:8000/out.js”``` within the script tag.
+Add ```src="http://localhost:8000/out.js"``` within the script tag.
 
 ![image](https://github.com/springload/webflow-dev-workflow/assets/27249781/5b2573e6-21fd-4652-b0e5-cbe084149da4)
 
@@ -47,7 +47,7 @@ You should see a minified version of your js file (+ any other modules you impor
 
 In Webflow, go to site-settings >> custom code >> footer code.
 
-Add ```src=“https://cdn.jsdelivr.net/gh/springload/webflow-dev-workflow/client-projects/[current project]/dist/out.js”``` within the script tag.
+Add ```src="https://cdn.jsdelivr.net/gh/springload/webflow-dev-workflow/client-projects/[current project]/dist/out.js"``` within the script tag.
 
 ![image](https://github.com/springload/webflow-dev-workflow/assets/27249781/3fce42cc-4e66-443a-8aa1-69c9f817d546)
 
