@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../index.ts"],
+  "sourcesContent": ["console.log(\"there's a hunter lumeing over this website v2\")"],
+  "mappings": "MAAA,QAAQ,IAAI,+CAA+C",
+  "names": []
+}

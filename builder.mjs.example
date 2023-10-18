@@ -7,14 +7,15 @@ import { sassPlugin } from "esbuild-sass-plugin";
 
 const context = await esbuild.context({
   entryPoints: [
-    "client-projects/test-project/index.ts",
-    "client-projects/test-project/react-component-test.tsx",
-    "client-projects/test-project/scss/styles.scss",
+    "client-projects/hunter-lumery/index.ts",
+    "client-projects/hunter-lumery/react-component.tsx",
+    "client-projects/hunter-lumery/styles.scss"
   ],
   bundle: true,
   minify: true,
   sourcemap: true,
-  outdir: "client-projects/test-project/dist",
+  outdir: "client-projects/hunter-lumery/dist",
+  // outfile: "client-projects/hunter-lumery/dist/out.js",
   plugins: [sassPlugin()],
 });
 
