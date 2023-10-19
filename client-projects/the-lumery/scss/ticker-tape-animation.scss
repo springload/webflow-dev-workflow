@@ -1,0 +1,41 @@
+body,
+.page-wrapper {
+  overflow-x: hidden;
+}
+.ticker-tape {
+  display: inline-block;
+  animation-name: scroll-ticker-tape;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-duration: 120s;
+
+  @media only screen and (max-width: 479px) {
+    animation-duration: 180s;
+  }
+}
+
+@keyframes scroll-ticker-tape {
+  to {
+    transform: translate(-100%, 0);
+  }
+}
+
+.ticker-tape__text {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 3px;
+
+  .ticker-tape__link:hover & {
+    --color-black: #1e1e1e;
+
+    color: var(--color-black);
+    text-decoration-color: var(--color-black);
+  }
+}
+
+.ticker-tape__link:hover .reduced-motion {
+  text-decoration-line: underline;
+  text-decoration-color: var(--color-black);
+  text-decoration-thickness: 3px;
+}
