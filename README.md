@@ -14,6 +14,7 @@ Add `console.log('test success')` in the `index.ts` file.
 
 ## Local development
 
+In the root directory, make a copy of `builder.mjs.example` named `builder.mjs`
 Edit the `entryPoints` and `outdir` values in the `builder.mjs` file to match your project.
 
 `entryPoints: ["client-projects/[current project]/[the file you’re working on]"`
@@ -39,6 +40,12 @@ Save and publish.
 Refresh your published site to see changes, no need to re-publish via Webflow to see changes after this point. Look for "test success" in console.
 
 ## Prod / CDN
+
+In the root directory, copy your current `builder.mjs` (which is ignored by git) to your project's subdirectory`[client-projects]/[your project]/builder.mjs` (where it will be tracked).
+Commit all of your changes and push to a branch with a name following this structure:
+`[your-project]/[type-of-change]/[ticket-number-if-one-exists]--[description]`
+eg.
+`the-lumery/chore/ABC-204--update-readme`
 
 Once you have pushed your changes to GitHub, and you want to serve your code via a CDN, use JSDeliver’s CDN.
 Go to: `https://cdn.jsdelivr.net/gh/springload/webflow-dev-workflow/client-projects/[your project]/dist/index.js`
