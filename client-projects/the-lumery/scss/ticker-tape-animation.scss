@@ -13,11 +13,6 @@ body,
   @media only screen and (max-width: 479px) {
     animation-duration: 180s;
   }
-
-  .ticker-tape__link:hover & {
-    /* this isn't working reliably, 🤷🏻 so I've recreated the effect in JS */
-    // animation-play-state: paused;
-  }
 }
 
 @keyframes scroll-ticker-tape {
