@@ -62,7 +62,7 @@ export default function heroHeadingAnimation() {
 
   const watchHeroSection = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
-      if (entry.target.className.includes(HERO_SECTION_SELECTOR)) {
+      if (entry.target.className.includes(HERO_SECTION_SELECTOR.slice(1))) {
         if (hasHeroAnimatedOnce && !isHeroHeadingAnimating) {
           // hide the heading in preparation for the next animation
           // (when the heading next appears on screen)
@@ -86,7 +86,7 @@ export default function heroHeadingAnimation() {
 
   const watchHeading = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
-      if (entry.target.className.includes(HEADING_WRAPPER_SELECTOR)) {
+      if (entry.target.className.includes(HEADING_WRAPPER_SELECTOR.slice(1))) {
         if (entry.isIntersecting) {
           if (isOutsideHeroSection) {
             animateHeroHeading();
