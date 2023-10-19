@@ -4,7 +4,7 @@ import { pauseAnimations, resumeAnimations } from "./utils";
 import {
   HERO_SECTION_SELECTOR,
   HEADING_WRAPPER_SELECTOR,
-  TARGET_H1_SELECTOR,
+  TARGET_HEADING_SELECTOR,
   CHANGING_TAGLINES_SELECTOR,
 } from "./selectors";
 
@@ -36,7 +36,7 @@ export default function heroHeadingAnimation() {
   const heroSection: HTMLElement | null = document.querySelector(
     HERO_SECTION_SELECTOR,
   );
-  // the h1 element itself is modifed and then replaced with a clone, so I'm using
+  // the heading element itself is modifed and then replaced with a clone, so I'm using
   // its always-there wrapper div as the target to observe.
   const heading: HTMLDivElement | null = document.querySelector(
     HEADING_WRAPPER_SELECTOR,
@@ -45,12 +45,12 @@ export default function heroHeadingAnimation() {
     throw new Error("Cannot find heading or hero section for header animation");
   }
 
-  // prevents a flash of the original h1. Opacity will be restored when animating
+  // prevents a flash of the original heading. Opacity will be restored when animating
   const hideHeading = () => (heading.style.opacity = "0");
   hideHeading();
 
   // on the 'Today' page, the intro text in the hero will begin its animation
-  // after the h1 animation is complete.
+  // after the heading animation is complete.
   const changingTaglinesContainer = document.querySelector(
     CHANGING_TAGLINES_SELECTOR,
   );
@@ -115,8 +115,10 @@ export default function heroHeadingAnimation() {
 
   function animateHeroHeading() {
     // TODO: global variable for reduced motion that listens for changes
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (!mediaQuery || mediaQuery.matches) {
+    const prefersReducedMotionQuery = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
+    if (!prefersReducedMotionQuery || prefersReducedMotionQuery.matches) {
       // If prefers reduced motion is set, don't animate the heading.
       return;
     }
@@ -180,8 +182,9 @@ export default function heroHeadingAnimation() {
     // twice the prevalence of letters to non-letters, otherwise it looks weird
     const lettersAndSymbols = [...letters, ...letters, ...symbols];
 
-    const { targetEl, originalEl, lines, totalChars } =
-      prepareElement(TARGET_H1_SELECTOR);
+    const { targetEl, cloneOfOriginalEl, lines, totalChars } = prepareElement(
+      TARGET_HEADING_SELECTOR,
+    );
 
     // this will determine when to switch each char back to its original letter
     const MAX_ITERATIONS = 20;
@@ -216,7 +219,7 @@ export default function heroHeadingAnimation() {
 
       if (charsStillAnimating === 0) {
         // we're done! allow lines to wrap again
-        targetEl.replaceWith(originalEl);
+        targetEl.replaceWith(cloneOfOriginalEl);
         isHeroHeadingAnimating = false;
         hasHeroAnimatedOnce = true;
       }
@@ -235,14 +238,15 @@ export default function heroHeadingAnimation() {
     );
   }
 
-  function prepareElement(selector = TARGET_H1_SELECTOR) {
+  function prepareElement(selector = TARGET_HEADING_SELECTOR) {
     const targetEl = document.querySelector(selector);
     if (!targetEl) {
-      throw new Error("Heading element to animate not found");
+      throw new Error(
+        `Heading element to animate not found: ${TARGET_HEADING_SELECTOR}`,
+      );
     }
     // making a copy in order to restore the original after the animation
-    const originalEl = targetEl.cloneNode(true);
-    const originalContent = targetEl.innerHTML;
+    const cloneOfOriginalEl = targetEl.cloneNode(true);
 
     // split the heading into individual character spans and arrange by line
     const splitByLines = Splitting({
@@ -319,17 +323,11 @@ export default function heroHeadingAnimation() {
         return container;
       });
 
-      const temporaryScreenreaderHeading = document.createElement("span");
-      temporaryScreenreaderHeading.setAttribute("class", "screenreader-only");
-      temporaryScreenreaderHeading.innerHTML = originalContent;
-      targetEl.replaceChildren(
-        temporaryScreenreaderHeading,
-        ...enclosedInBlockSpans,
-      );
+      targetEl.replaceChildren(...enclosedInBlockSpans);
     };
 
     preventLinesFromWrapping();
 
-    return { targetEl, originalEl, lines, totalChars };
+    return { targetEl, cloneOfOriginalEl, lines, totalChars };
   }
 }
