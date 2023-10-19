@@ -13,3 +13,21 @@ export function resumeAnimations(selector: string) {
     .filter((animation) => animation.playState === "paused")
     .map((animation) => animation.play());
 }
+
+export function onlyPlayWhenVisible(selector: string) {
+  const watchEl = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        resumeAnimations(selector);
+      } else {
+        pauseAnimations(selector);
+      }
+    });
+  };
+  const observer = new IntersectionObserver(watchEl);
+  const animatedEl = document.querySelector(selector);
+
+  if (animatedEl) {
+    observer.observe(animatedEl);
+  }
+}
