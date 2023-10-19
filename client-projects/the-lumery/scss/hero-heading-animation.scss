@@ -1,0 +1,25 @@
+.hero-animation__target .char {
+  opacity: 0;
+}
+
+.hero__heading {
+  text-wrap: balance;
+
+  .background-color-purple & {
+    color: white;
+  }
+  .hero--primary & {
+    font-size: 10.625rem;
+
+    @media only screen and (max-width: 479px) {
+      font-size: 4.75rem;
+    }
+  }
+}
+
+// applied to the line span: lock characters to their line while the heading is animating
+.no-wrap {
+  display: block;
+  overflow: visible;
+  white-space: nowrap;
+}
