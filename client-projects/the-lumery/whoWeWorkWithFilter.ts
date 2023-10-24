@@ -1,11 +1,16 @@
 import { CLIENT_FILTER_BUTTON_SELECTOR } from "./selectors";
 import { prefersReducedMotion } from "./utils";
 
-type ClientCategory =
-  | "customers"
-  | "technology-vendors"
-  | "industry-associations";
+const CLIENT_CATEGORIES = [
+  "customers",
+  "technology-vendors",
+  "industry-associations",
+] as const;
 
+type ClientCategory = (typeof CLIENT_CATEGORIES)[number];
+
+// Webflow doesn't let us create <button> elements, so this function grabs
+// the <a> elements which should be <button>s and converts them.
 export const createClientFilterButtons = () => {
   const fakeButtons: HTMLAnchorElement[] | undefined = Array.from(
     document.querySelectorAll(CLIENT_FILTER_BUTTON_SELECTOR),
@@ -37,12 +42,6 @@ export const createClientFilterButtons = () => {
 };
 
 export function handleCategoryChange(selectedCategory: ClientCategory) {
-  const categories: ClientCategory[] = [
-    "customers",
-    "technology-vendors",
-    "industry-associations",
-  ];
-
   const clientFilterButtons: HTMLButtonElement[] = Array.from(
     document.querySelectorAll(CLIENT_FILTER_BUTTON_SELECTOR),
   );
@@ -78,7 +77,7 @@ export function handleCategoryChange(selectedCategory: ClientCategory) {
   const fadeInKeyframes = [{ opacity: 0 }, { opacity: 1 }];
   const fadeOutKeyframes = [{ opacity: 1 }, { opacity: 0 }];
 
-  categories.forEach((category) => {
+  CLIENT_CATEGORIES.forEach((category) => {
     if (selectedCategory === category) {
       const logosToShow: HTMLElement | null = document.querySelector(
         `.${category}`,
