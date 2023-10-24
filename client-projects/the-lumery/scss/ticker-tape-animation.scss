@@ -10,7 +10,7 @@ body,
   animation-play-state: running;
   animation-duration: 120s;
 
-  @media only screen and (max-width: 479px) {
+  @include mobile-portrait-down {
     animation-duration: 180s;
   }
 }

@@ -1,8 +1,8 @@
 import { CHANGING_TAGLINES_SELECTOR, TAGLINE_SELECTOR } from "./selectors";
 
 export function swapOutTaglines() {
-  // the ~7 tagline texts are added in the CMS as a Webflow Collection
-  const taglineEls: HTMLDivElement[] = Array.from(
+  // there are 6 tagline text props for the animated tagline component.
+  const taglineEls: HTMLDivElement[] | null = Array.from(
     document.querySelectorAll(TAGLINE_SELECTOR),
   );
   // each time the header is viewed, there is a different random order of taglines

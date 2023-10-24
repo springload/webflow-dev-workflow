@@ -1,0 +1,23 @@
+// using the names, settings and desktop-first approach of Webflow's breakpoints
+
+$breakpoint-tablet: 991px;
+$breakpoint-mobile-landscape: 767px;
+$breakpoint-mobile-portrait: 479px;
+
+@mixin tablet-down {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile-landscape-down {
+  @media (max-width: $breakpoint-mobile-landscape) {
+    @content;
+  }
+}
+
+@mixin mobile-portrait-down {
+  @media (max-width: $breakpoint-mobile-portrait) {
+    @content;
+  }
+}
