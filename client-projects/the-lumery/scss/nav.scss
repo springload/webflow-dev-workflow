@@ -53,6 +53,10 @@
   padding-right: 0.5rem;
 }
 
+.nav__dropdown-list.w--open {
+  border-top-color: var(--color-black);
+}
+
 .nav__link {
   text-underline-offset: 0.1em;
   text-decoration-thickness: 2px;
