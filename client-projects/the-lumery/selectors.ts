@@ -9,3 +9,5 @@ export const TICKER_TAPE_SELECTOR = ".ticker-tape__link";
 export const YT_DEFER_SELECTOR = ".ytdefer";
 export const CLIENT_FILTER_BUTTON_SELECTOR = ".button--clients";
 export const WHO_WE_WORK_WITH_SECTION_SELECTOR = "#who-we-work-with";
+export const DROPDOWN_TOGGLE_SELECTOR = ".nav__dropdown-toggle";
+export const DROPDOWN_LINK_SELECTOR = ".nav__dropdown-link";
