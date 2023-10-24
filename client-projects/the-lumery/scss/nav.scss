@@ -20,6 +20,7 @@
   }
 
   &.w-dropdown-link.w--current {
+    color: var(--color-black);
     font-weight: 500;
     pointer-events: none;
   }
