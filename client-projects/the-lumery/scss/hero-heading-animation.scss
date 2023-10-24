@@ -15,6 +15,13 @@
       font-size: 4.75rem;
     }
   }
+  .hero--secondary & {
+    font-size: 6.25rem;
+
+    @media only screen and (max-width: 479px) {
+      font-size: 3.81rem;
+    }
+  }
 }
 
 // applied to the line span: lock characters to their line while the heading is animating

@@ -1,8 +1,0 @@
-// Webflow says: "items inside a collection list are automatically placed." ...hence the need for custom code
-
-.changing-taglines__tagline {
-  grid-column: 1;
-  grid-row: 1;
-  opacity: 0;
-  transform: translateY(100%);
-}

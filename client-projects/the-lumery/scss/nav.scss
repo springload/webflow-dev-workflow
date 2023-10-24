@@ -1,0 +1,62 @@
+.nav__dropdown-link {
+  // these will be animated in using 'rotateX'
+  transform-origin: top;
+
+  .background-color-green & {
+    background-color: var(--color-green-light);
+  }
+  .background-color-purple & {
+    background-color: var(--color-purple-light);
+  }
+  .background-color-red & {
+    background-color: var(--color-red-light);
+  }
+
+  &:first-child {
+    padding-top: 1rem;
+  }
+  &:last-child {
+    padding-bottom: 1.2rem;
+  }
+
+  &.w-dropdown-link.w--current {
+    font-weight: 500;
+    pointer-events: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.12em;
+  }
+}
+
+.nav__dropdown-title {
+  .yesterday-page &--yesterday,
+  .today-page &--today,
+  .tomorrow-page &--tomorrow {
+    font-weight: 700;
+  }
+}
+
+.nav__dropdown-icon {
+  .yesterday-page &--yesterday,
+  .today-page &--today,
+  .tomorrow-page &--tomorrow {
+    stroke-width: 2px;
+  }
+}
+
+.nav__dropdown-toggle.w-dropdown-toggle {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.nav__link {
+  text-underline-offset: 0.1em;
+  text-decoration-thickness: 2px;
+  transition: text-underline-offset 200ms ease-in-out;
+}
+.nav__link:hover {
+  text-underline-offset: 0.25em;
+}
