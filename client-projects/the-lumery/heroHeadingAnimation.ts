@@ -1,6 +1,10 @@
 import Splitting from "splitting";
 import { swapOutTaglines } from "./swapOutTaglines";
-import { pauseAnimations, resumeAnimations } from "./utils";
+import {
+  pauseAnimations,
+  resumeAnimations,
+  prefersReducedMotion,
+} from "./utils";
 import {
   HERO_SECTION_SELECTOR,
   HEADING_WRAPPER_SELECTOR,
@@ -114,12 +118,7 @@ export default function heroHeadingAnimation() {
   headingObserver.observe(heading);
 
   function animateHeroHeading() {
-    // TODO: global variable for reduced motion that listens for changes
-    const prefersReducedMotionQuery = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    );
-    if (!prefersReducedMotionQuery || prefersReducedMotionQuery.matches) {
-      // If prefers reduced motion is set, don't animate the heading.
+    if (prefersReducedMotion()) {
       return;
     }
     // characters to replace the text — the widest letters (m & w) are removed

@@ -7,3 +7,5 @@ export const TYPING_LINK_SELECTOR = ".typing__link";
 export const TYPING_TEXT_SELECTOR = ".typing__text";
 export const TICKER_TAPE_SELECTOR = ".ticker-tape__link";
 export const YT_DEFER_SELECTOR = ".ytdefer";
+export const CLIENT_FILTER_BUTTON_SELECTOR = ".button--clients";
+export const WHO_WE_WORK_WITH_SECTION_SELECTOR = "#who-we-work-with";

@@ -31,3 +31,10 @@ export function onlyPlayWhenVisible(selector: string) {
     observer.observe(animatedEl);
   }
 }
+
+export function prefersReducedMotion() {
+  const prefersReducedMotionQuery = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  );
+  return !prefersReducedMotionQuery || prefersReducedMotionQuery.matches;
+}
