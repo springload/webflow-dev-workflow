@@ -13,8 +13,12 @@ import {
 } from "./utils";
 import { ytdefer_setup } from "./ytdefer";
 import { createClientFilterButtons } from "./whoWeWorkWithFilter";
+import { setUpDropdowns } from "./navDropdown";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // nav dropdowns have a staggered animation effect on their children
+  setUpDropdowns();
+
   // all pages have a hero heading animation.
   // the hero's intersectionObserver setup is contained within the function.
   heroHeadingAnimation();
