@@ -5,24 +5,36 @@ import {
   TICKER_TAPE_SELECTOR,
   YT_DEFER_SELECTOR,
   WHO_WE_WORK_WITH_SECTION_SELECTOR,
+  CHANGING_TAGLINES_SELECTOR,
 } from "./selectors";
 import {
   onlyPlayWhenVisible,
   pauseAnimations,
   resumeAnimations,
+  prefersReducedMotion
 } from "./utils";
 import { ytdefer_setup } from "./ytdefer";
 import { createClientFilterButtons } from "./whoWeWorkWithFilter";
 import { setUpDropdowns } from "./navDropdown";
+import { swapOutTaglines } from "./swapOutTaglines";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // nav dropdowns have a staggered animation effect on their children
-  setUpDropdowns();
+  if (!prefersReducedMotion()) {
+    // nav dropdowns have a staggered animation effect on their children
+    setUpDropdowns();
 
-  // all pages have a hero heading animation.
-  // the hero's intersectionObserver setup is contained within the function.
-  heroHeadingAnimation();
-
+    // all pages have a hero heading animation. On the 'Today' page, there's a
+    // 'changing taglines' animation that follows it.
+    heroHeadingAnimation();
+  } else {
+    // there's no reduced-motion version of the hero heading animation, but
+    // the reduced-motion version of 'swapOutTaglines' can still play
+    if (document.querySelector(CHANGING_TAGLINES_SELECTOR)) {
+      swapOutTaglines;
+      onlyPlayWhenVisible(CHANGING_TAGLINES_SELECTOR);
+    }
+  }
+  
   // typewriter effect (found on 'yesterday' and 'today' pages)
   if (document.querySelector(TYPING_LINK_SELECTOR)) {
     typeTextOn();
