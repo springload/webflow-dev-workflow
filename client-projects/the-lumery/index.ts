@@ -15,13 +15,13 @@ import {
 } from "./utils";
 import { ytdefer_setup } from "./ytdefer";
 import { createClientFilterButtons } from "./whoWeWorkWithFilter";
-import { setUpDropdowns } from "./navDropdown";
+import { setUpDropdownAnimations } from "./navDropdown";
 import { swapOutTaglines } from "./swapOutTaglines";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (!prefersReducedMotion()) {
     // nav dropdowns have a staggered animation effect on their children
-    setUpDropdowns();
+    setUpDropdownAnimations();
 
     // all pages have a hero heading animation. On the 'Today' page, there's a
     // 'changing taglines' animation that follows it.
