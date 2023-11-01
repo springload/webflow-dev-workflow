@@ -6,6 +6,7 @@ import {
   YT_DEFER_SELECTOR,
   WHO_WE_WORK_WITH_SECTION_SELECTOR,
   CHANGING_TAGLINES_SELECTOR,
+  FILTER_BUTTON_LIST_SELECTOR,
 } from "./selectors";
 import {
   onlyPlayWhenVisible,
@@ -17,6 +18,7 @@ import { ytdefer_setup } from "./ytdefer";
 import { createClientFilterButtons } from "./whoWeWorkWithFilter";
 import { setUpDropdowns } from "./navDropdown";
 import { swapOutTaglines } from "./swapOutTaglines";
+import { setUpFilterButtons } from "./filterButtons";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (!prefersReducedMotion()) {
@@ -34,7 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
       onlyPlayWhenVisible(CHANGING_TAGLINES_SELECTOR);
     }
   }
-  
+
+  // The article landing pages (Projects, Tomorrow Insights) can be filtered.
+  // The layout of the filter button section is severely limited by Webflow's rules.
+  // This is a hack to put the 'reset' button in the right place to match the design
+  if (document.querySelector(FILTER_BUTTON_LIST_SELECTOR)) {
+    setUpFilterButtons();
+  }
+
   // typewriter effect (found on 'yesterday' and 'today' pages)
   if (document.querySelector(TYPING_LINK_SELECTOR)) {
     typeTextOn();
