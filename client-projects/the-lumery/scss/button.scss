@@ -1,0 +1,186 @@
+// .btn is in fact (in the tradition of Webflow) an <a> tag rather than a <button>
+// there's a pre-existing class of .button, hence the name .btn
+// these components have the following structure:
+// <a class="btn">
+//   <div class="btn__bg">
+//   <div class="btn__text">   (Webflow won't allow a <p> or a <span>)
+//</a>
+
+.btn {
+  --easing: cubic-bezier(0.1, 0, 0.3, 1);
+  --border-radius: 100px;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  display: grid;
+  grid-template-areas: "button";
+
+  cursor: pointer;
+  text-decoration: none;
+
+  // visible focus will be applied on the .btn__bg element instead
+  &:focus {
+    outline: 0;
+  }
+}
+
+.btn__bg {
+  grid-area: button;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  transform-origin: center;
+  transform: scale(1);
+  transition: transform 300ms var(--easing);
+  outline-color: transparent;
+  outline-width: 2px;
+  outline-style: solid;
+
+  .btn:hover &,
+  .btn:active &,
+  .card__link:hover &,
+  .card__link:active &,
+  .button--submit:hover + .fake-button-container &,
+  .button--submit:active + .fake-button-container & {
+    transform: scale(1.1);
+  }
+}
+
+// in a primary button, a yellow background div is covered with its black ::after
+// pseudoelement on hover.
+.btn__bg--primary {
+  background-color: var(--color-yellow);
+
+  // black bg
+  &::after {
+    content: "";
+    grid-area: button;
+    display: block;
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-black);
+    transform-origin: center;
+    transform: scaleX(0);
+    transition: transform 300ms var(--easing);
+  }
+
+  // black background expands out horizontally from centre
+  .btn:hover &::after,
+  .card__link:hover &::after,
+  .button--submit:hover + .fake-button-container &::after {
+    transform: scaleX(1);
+  }
+
+  .btn:focus &,
+  .card__link:focus &,
+  .button--submit:focus + .fake-button-container & {
+    outline-color: var(--color-black);
+  }
+
+  // the hovered button would disappear on a black background, so:
+  .background-color-black .btn:hover & {
+    border: 1px solid var(--color-yellow);
+  }
+  .background-color-black .btn:focus & {
+    outline: 2px solid var(--color-white);
+  }
+}
+
+// in a secondary button, there's no background, just a contrasting border
+.btn__bg--secondary {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-black);
+
+  .btn:focus & {
+    border-color: var(--color-yellow);
+  }
+  input:focus-visible + .fake-button & {
+    border-color: var(--color-white);
+  }
+
+  .background-color-black & {
+    border-color: var(--color-white);
+  }
+
+  .background-color-black .btn:focus & {
+    outline: var(--color-yellow);
+  }
+}
+
+.btn__text {
+  grid-area: button;
+  justify-self: center;
+  z-index: 1;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: center;
+  color: var(--color-black);
+  font-family: "Metric", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  @include mobile-portrait-down {
+    font-size: 1rem;
+  }
+}
+
+.btn__text--primary {
+  transition: color 300ms linear;
+  .btn:hover &,
+  .card__link:hover &,
+  .button--submit:hover + .fake-button-container & {
+    color: var(--color-white);
+  }
+  .btn:active &,
+  .card__link:active &,
+  .button--submit:active + .fake-button-container & {
+    color: var(--color-yellow);
+  }
+}
+
+// sometimes the 'fake' button components need to be wrapped for layout purposes,
+// we don't pointer events on fake buttons, (they react to interaction on hidden
+// parents or siblings) so they should be removed here too.
+.fake-button-container {
+  pointer-events: none;
+}
+
+// filter buttons on the Projects page
+
+.filter__button-list .button--grouped {
+  flex-grow: 0;
+  flex-shrink: 0;
+  @include mobile-landscape-down {
+    flex-basis: calc(33% - 1rem);
+  }
+  @include mobile-portrait-down {
+    flex-basis: calc(50% - 0.75rem);
+  }
+}
+
+// overwrite secret Webflow 'w-' styles
+.filter__button.w-radio {
+  margin-bottom: 0;
+  padding: 0;
+
+  &::before,
+  .w-radio::after {
+    content: none;
+  }
+}
+
+.filter__radio-button {
+  opacity: 0;
+}
+
+input[type="radio"]:checked + .fake-button.btn--filter {
+  .btn__bg {
+    background-color: var(--color-black);
+  }
+  .btn__text {
+    color: var(--color-white);
+  }
+}
