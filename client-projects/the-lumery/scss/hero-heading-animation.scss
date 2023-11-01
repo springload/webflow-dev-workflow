@@ -8,18 +8,26 @@
   .background-color-purple & {
     color: white;
   }
+
   .hero--primary & {
     font-size: 10.625rem;
 
+    @include mobile-landscape-down {
+      font-size: 6rem;
+    }
     @include mobile-portrait-down {
-      font-size: 4.75rem;
+      font-size: 4.25rem;
     }
   }
+
   .hero--secondary & {
     font-size: 6.25rem;
 
+    @include mobile-landscape-down {
+      font-size: 5rem;
+    }
     @include mobile-portrait-down {
-      font-size: 3.81rem;
+      font-size: 3.5rem;
     }
   }
 }

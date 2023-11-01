@@ -3,7 +3,6 @@ import { swapOutTaglines } from "./swapOutTaglines";
 import {
   pauseAnimations,
   resumeAnimations,
-  prefersReducedMotion,
 } from "./utils";
 import {
   HERO_SECTION_SELECTOR,
@@ -118,9 +117,6 @@ export default function heroHeadingAnimation() {
   headingObserver.observe(heading);
 
   function animateHeroHeading() {
-    if (prefersReducedMotion()) {
-      return;
-    }
     // characters to replace the text — the widest letters (m & w) are removed
     // so that the word length doesn't increase too much
     const letters = [
