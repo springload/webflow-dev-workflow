@@ -7,6 +7,7 @@ import {
   WHO_WE_WORK_WITH_SECTION_SELECTOR,
   CHANGING_TAGLINES_SELECTOR,
   FILTER_BUTTON_LIST_SELECTOR,
+  CARD_LINK_SELECTOR,
 } from "./selectors";
 import {
   onlyPlayWhenVisible,
@@ -19,6 +20,7 @@ import { createClientFilterButtons } from "./whoWeWorkWithFilter";
 import { setUpDropdowns } from "./navDropdown";
 import { swapOutTaglines } from "./swapOutTaglines";
 import { setUpFilterButtons } from "./filterButtons";
+import { setUpImageAnimation } from "./cardImages";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (!prefersReducedMotion()) {
@@ -43,6 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector(FILTER_BUTTON_LIST_SELECTOR)) {
     setUpFilterButtons();
   }
+
+  // images within cards fade up and on when they appear on screen, and have a
+  // hover effect applied.
+  if (document.querySelectorAll(CARD_LINK_SELECTOR)) {
+    setUpImageAnimation();
+  }
+
 
   // typewriter effect (found on 'yesterday' and 'today' pages)
   if (document.querySelector(TYPING_LINK_SELECTOR)) {
