@@ -1,4 +1,5 @@
 import { CHANGING_TAGLINES_SELECTOR, TAGLINE_SELECTOR } from "./selectors";
+import { prefersReducedMotion } from "./utils";
 
 export function swapOutTaglines() {
   // there are 6 tagline text props for the animated tagline component.
@@ -14,18 +15,19 @@ export function swapOutTaglines() {
   const container = document.querySelector(CHANGING_TAGLINES_SELECTOR);
   container?.replaceChildren(...shuffledEls);
 
+  const isReducedMotionVersion = prefersReducedMotion();
   // The hero header animation needs to play out before taglines start animating
-  const initialDelay = 1000;
+  const initialDelay = isReducedMotionVersion ? 500 : 1000;
   // time for element to move in/out of position
   const inDuration = 600;
   const outDuration = 600;
   // currEl starts moving out slightly before nextEl moves in
-  const entranceDelay = 200;
+  const entranceDelay = isReducedMotionVersion ? 500 : 200;
   // time inbetween transitions when a tagline is static and visible
-  const pause = 3000;
+  const pause = isReducedMotionVersion ? 4000 : 3000;
   const fill = "both";
 
-  const keyframesIn = [
+  const slideInKeyframes = [
     {
       offset: 0,
       transform: "translateY(100%)",
@@ -36,7 +38,7 @@ export function swapOutTaglines() {
     { offset: 1, transform: "translateY(0)", filter: "blur(0)" },
     { offset: 1, opacity: 1 },
   ];
-  const keyframesOut = [
+  const slideOutkeyframes = [
     {
       offset: 0,
       transform: "translateY(0)",
@@ -48,29 +50,48 @@ export function swapOutTaglines() {
     { offset: 1, transform: "translateY(-100%)", filter: "blur(2px)" },
     { offset: 1, opacity: 0 },
   ];
+  const fadeInKeyframes = [
+    { opacity: 0, transform: "translateY(0)" },
+    { opacity: 1, transform: "translateY(0)" },
+  ];
+  const fadeOutKeyframes = [
+    { opacity: 1, transform: "translateY(0)" },
+    { opacity: 0, transform: "translateY(0)" },
+  ];
 
-  const swapOutEls = (index: number, array: HTMLDivElement[]) => {
+  const outKeyframes = isReducedMotionVersion
+    ? fadeOutKeyframes
+    : slideOutkeyframes;
+  const inKeyframes = isReducedMotionVersion
+    ? fadeInKeyframes
+    : slideInKeyframes;
+
+  const swapOutEls = (array: HTMLDivElement[], index = 0) => {
     // loop back to the beginning at the end of the array
     const nextIndex = (index + 1) % array.length;
     const currEl = array[index];
     const nextEl = array[nextIndex];
 
-    currEl.animate(keyframesOut, {
+    currEl.animate(outKeyframes, {
       delay: pause,
       duration: outDuration,
       fill,
     });
 
-    const animateNextIn = nextEl.animate(keyframesIn, {
+    const animateNextIn = nextEl.animate(inKeyframes, {
       delay: pause + entranceDelay,
       duration: inDuration,
       fill,
     });
 
-    animateNextIn.finished.then(() => swapOutEls(nextIndex, array));
+    animateNextIn.finished.then(() => swapOutEls(array, nextIndex));
   };
 
   shuffledEls[0]
-    .animate(keyframesIn, { duration: inDuration, delay: initialDelay, fill })
-    .finished.then(() => swapOutEls(0, shuffledEls));
+    .animate(inKeyframes, {
+      duration: inDuration,
+      delay: initialDelay,
+      fill,
+    })
+    .finished.then(() => swapOutEls(shuffledEls));
 }
