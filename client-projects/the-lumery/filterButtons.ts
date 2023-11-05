@@ -4,18 +4,18 @@ import {
 } from "./selectors";
 
 export function setUpFilterButtons() {
-  const resetButton: HTMLElement | null = document.querySelector(
+  const resetButton = document.querySelector(
     FILTER_RESET_BUTTON_SELECTOR,
   );
-  if (!resetButton) {
+  if (!(resetButton instanceof HTMLElement)) {
     throw new Error(
       `Reset button element not found: ${FILTER_RESET_BUTTON_SELECTOR}`,
     );
   }
-  const filterButtonList: HTMLElement | null = document.querySelector(
+  const filterButtonList = document.querySelector(
     FILTER_BUTTON_LIST_SELECTOR,
   );
-  if (!filterButtonList) {
+  if (!(filterButtonList instanceof HTMLElement)) {
     throw new Error(
       `Filter button list element not found: ${FILTER_BUTTON_LIST_SELECTOR}`,
     );
