@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // images within cards fade up and on when they appear on screen, and have a
   // hover effect applied.
-  if (document.querySelectorAll(CARD_LINK_SELECTOR)) {
+  if (document.querySelectorAll(CARD_LINK_SELECTOR).length) {
     setUpImageAnimation();
   }
 
