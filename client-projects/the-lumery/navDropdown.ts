@@ -1,6 +1,6 @@
 import { DROPDOWN_TOGGLE_SELECTOR, DROPDOWN_LINK_SELECTOR } from "./selectors";
 
-export function setUpDropdowns() {
+export function setUpDropdownAnimations() {
   const navDropdowns = document.querySelectorAll(DROPDOWN_TOGGLE_SELECTOR);
   if (!navDropdowns) {
     return;

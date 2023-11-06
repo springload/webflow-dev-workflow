@@ -20,7 +20,7 @@ import {
 } from "./utils";
 import { ytdefer_setup } from "./ytdefer";
 import { createClientFilterButtons } from "./whoWeWorkWithFilter";
-import { setUpDropdowns } from "./navDropdown";
+import { setUpDropdownAnimations } from "./navDropdown";
 import { swapOutTaglines } from "./swapOutTaglines";
 import { setUpFilterButtons } from "./filterButtons";
 import { setUpImageAnimation } from "./cardImages";
@@ -30,7 +30,7 @@ import { JobsContainer } from "./js/JobsComponent";
 document.addEventListener("DOMContentLoaded", () => {
   if (!prefersReducedMotion()) {
     // nav dropdowns have a staggered animation effect on their children
-    setUpDropdowns();
+    setUpDropdownAnimations();
 
     // all pages have a hero heading animation. On the 'Today' page, there's a
     // 'changing taglines' animation that follows it.
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // images within cards fade up and on when they appear on screen, and have a
   // hover effect applied.
-  if (document.querySelectorAll(CARD_LINK_SELECTOR)) {
+  if (document.querySelectorAll(CARD_LINK_SELECTOR).length) {
     setUpImageAnimation();
   }
 
