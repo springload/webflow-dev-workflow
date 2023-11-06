@@ -1,63 +1,28 @@
 import React, { useEffect, useState } from "react";
-// import { Jobs as jobsJson } from "../../hunter-lumery/jobs.json";
 
 export const JobsContainer = () => {
   const [isLoading, setLoading] = useState(false);
   const [jobs, setJobs] = useState([]);
 
-  // console.log("about to do getJobs");
-
   getJobsJSON(setLoading, setJobs);
-
-  // console.log("doing getJobs");
-  // useEffect(async () => {
-  //   console.log("firing the hook in body");
-  //   const response = await fetch(
-  //     "https://tlmw-external.azurewebsites.net/api/JobPostingsTrigger?code=mQJYB4t8rc6p6Zr-Khjbk5srngBr_BVdgdDWdzIsMgJdAzFuuX4RDw==&format=json",
-  //   );
-  //   if (response.ok) {
-  //     const responseString = await response.text();
-  //     const doctoredString = responseString.slice(1, -1).replace(/\\/g, "");
-  //     console.log(doctoredString);
-  //     const json = JSON.parse(doctoredString);
-  //     setJobs(json.Jobs);
-  //     setLoading(false);
-  //   } else {
-  //     console.log("else case");
-  //   }
-
-  //   console.log("bottom of async block");
-  // }, []);
-
-  // console.log({ jobs });
 
   return JobsDisplay(isLoading, jobs);
 };
 
 const getJobsJSON = async (setLoading, setJobs) => {
-  // console.log("doing getJobs");
   useEffect(async () => {
-    // console.log("firing the hook");
     const response = await fetch(
       "https://tlmw-external.azurewebsites.net/api/JobPostingsTrigger?code=mQJYB4t8rc6p6Zr-Khjbk5srngBr_BVdgdDWdzIsMgJdAzFuuX4RDw==&format=json",
     );
     if (response.ok) {
-      // const responseString = await response.text();
-      // const doctoredString = responseString.slice(1, -1).replace(/\\/g, "");
-      // console.log(doctoredString);
-      const json = await response.json(); //JSON.parse(/*doctoredString ||*/ responseString);
-      // console.log({ json });
+      const json = await response.json();
       setJobs(json.jobs);
       setLoading(false);
-    } else {
-      console.log("else case");
     }
   }, []);
 };
 
 const JobsDisplay = (isLoading, jobJson) => {
-  // TODO: yank out the async and see what happens
-  // console.log(jobJson);
   return (
     <div className="margin-small">
       <div className="text-wrapper-hiring">
