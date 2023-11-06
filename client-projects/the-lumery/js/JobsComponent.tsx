@@ -61,7 +61,7 @@ const JobsDisplay = (isLoading, jobJson) => {
   return (
     <div className="margin-small">
       <div className="text-wrapper-hiring">
-        <h2 className="heading-style-h3">Today we're hiring</h2>
+        <h2 className="heading-style-h2">Today we're hiring</h2>
         <div className="padding-bottom padding-small"></div>
         <div className="text-body-medium">
           Both data and Technology can be pretty flat without some bright minds
@@ -80,7 +80,7 @@ const JobsDisplay = (isLoading, jobJson) => {
               <>
                 <a href={job.link} className="ad-link w-inline-block">
                   <div className="text-wrapper-ad">
-                    <h3 className="heading-style-h2 text-color-black">
+                    <h3 className="heading-style-h3 text-color-black">
                       {job.name}
                     </h3>
                     <div className="padding-bottom padding-small"></div>

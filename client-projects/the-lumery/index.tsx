@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // all pages have a hero heading animation. On the 'Today' page, there's a
     // 'changing taglines' animation that follows it.
-    // heroHeadingAnimation();
+    heroHeadingAnimation();
   } else {
     // there's no reduced-motion version of the hero heading animation, but
     // the reduced-motion version of 'swapOutTaglines' can still play
