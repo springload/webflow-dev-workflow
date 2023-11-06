@@ -1,3 +1,6 @@
+import React from "react";
+import { createRoot } from "react-dom/client";
+
 import heroHeadingAnimation from "./heroHeadingAnimation";
 import { typeTextOn } from "./typeTextOn";
 import {
@@ -13,7 +16,7 @@ import {
   onlyPlayWhenVisible,
   pauseAnimations,
   resumeAnimations,
-  prefersReducedMotion
+  prefersReducedMotion,
 } from "./utils";
 import { ytdefer_setup } from "./ytdefer";
 import { createClientFilterButtons } from "./whoWeWorkWithFilter";
@@ -22,6 +25,8 @@ import { swapOutTaglines } from "./swapOutTaglines";
 import { setUpFilterButtons } from "./filterButtons";
 import { setUpImageAnimation } from "./cardImages";
 
+import { JobsContainer } from "./js/JobsComponent";
+
 document.addEventListener("DOMContentLoaded", () => {
   if (!prefersReducedMotion()) {
     // nav dropdowns have a staggered animation effect on their children
@@ -29,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // all pages have a hero heading animation. On the 'Today' page, there's a
     // 'changing taglines' animation that follows it.
-    heroHeadingAnimation();
+    // heroHeadingAnimation();
   } else {
     // there's no reduced-motion version of the hero heading animation, but
     // the reduced-motion version of 'swapOutTaglines' can still play
@@ -51,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelectorAll(CARD_LINK_SELECTOR)) {
     setUpImageAnimation();
   }
-
 
   // typewriter effect (found on 'yesterday' and 'today' pages)
   if (document.querySelector(TYPING_LINK_SELECTOR)) {
@@ -84,4 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector(WHO_WE_WORK_WITH_SECTION_SELECTOR)) {
     createClientFilterButtons();
   }
+
+  const root = createRoot(document.getElementById("react-root"));
+  root.render(<JobsContainer />);
 });
