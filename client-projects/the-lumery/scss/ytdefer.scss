@@ -2,6 +2,12 @@
   aspect-ratio: 16 / 9;
   object-fit: cover;
   cursor: pointer;
+
+  // the div that wraps the img & button has only a generated id for reference,
+  // but its hardcoded width needs to be overwritten to prevent overflow on mobile.
+  & div {
+    width: 100% !important;
+  }
 }
 
 .video__title,

@@ -1,0 +1,132 @@
+.slider {
+  --arrow-size: 4rem;
+  --nav-dot-size: 1rem;
+  --nav-dot-with-padding: calc((var(--nav-dot-size) * 2));
+  --nav-gap: 0.5rem;
+
+  &.todays-plan__slider {
+    margin-top: calc(var(--arrow-size) + 2rem);
+  }
+}
+
+.slider--projects {
+  min-height: 90vh;
+  @include mobile-landscape-down {
+    min-height: unset;
+    height: auto;
+
+    & .slide__image {
+      aspect-ratio: 1 / 1;
+    }
+  }
+}
+
+// the nav is the circular 'dots' which allow you to directly navigate to any slide
+.slider__nav {
+  display: flex;
+  gap: var(--nav-gap);
+}
+
+.slider__nav--todays-plan {
+  padding-top: 1rem;
+  padding-left: 66.7vw;
+
+  @include mobile-portrait-down {
+    padding-left: calc(
+      100vw - (var(--nav-dot-with-padding) * 4) - (var(--nav-gap) * 3)
+    );
+  }
+}
+
+.slider__nav--projects {
+  flex-direction: column;
+  margin: 0;
+  padding-left: 2rem;
+  position: absolute;
+  top: 38%;
+
+  @include mobile-landscape-down {
+    padding-left: calc(100vw - 3rem);
+    top: 4rem;
+  }
+}
+
+.w-slider-dot {
+  // overwriting the required margin that Webflow sets inline
+  margin: 0 !important;
+  border-radius: 100%;
+  background-color: transparent;
+  padding: 1rem;
+  width: var(--nav-dot-size);
+  height: var(--nav-dot-size);
+  display: grid;
+  place-content: center;
+  &::after {
+    content: "";
+    width: var(--nav-dot-size);
+    height: var(--nav-dot-size);
+    border-radius: 100%;
+    background-color: transparent;
+    border: 1px solid var(--color-black);
+  }
+
+  &:hover::after {
+    background-color: var(--color-yellow-light);
+  }
+
+  &.w-active {
+    pointer-events: none;
+  }
+  &.w-active::after {
+    background-color: var(--color-black);
+
+    @include mobile-landscape-down {
+      background-color: var(--color-purple) !important;
+      border: 1px solid var(--color-purple);
+    }
+  }
+}
+
+// the arrows are the next / prev slide buttons
+.slider__arrow {
+  width: var(--arrow-size);
+  height: var(--arrow-size);
+  right: var(--arrow-size);
+  margin: 0;
+  overflow: visible;
+
+  &:hover .icon--rounded {
+    background-color: var(--color-yellow-light);
+  }
+  &:focus-visible {
+    outline: none !important;
+  }
+  &:focus-visible .icon--rounded {
+    outline: 2px solid var(--color-black);
+  }
+}
+
+.slider__arrow--left {
+  top: unset;
+  left: unset;
+  bottom: -2rem;
+}
+
+.slider__arrow--right {
+  top: -2rem;
+}
+
+.slider__arrow--left--benefits {
+  bottom: 0.5rem;
+}
+
+.slider__arrow--left--todays-plan {
+  left: 1rem;
+  top: -5rem;
+}
+
+.slider__arrow--right--todays-plan {
+  right: unset;
+  left: calc(100vw - var(--arrow-size) - 1rem);
+  top: -5rem;
+}

@@ -40,6 +40,11 @@
   }
 }
 
+// ensures the mobile nav enters form the top of the screen, not from below the navbar
+#w-nav-overlay-0 {
+  top: 0;
+}
+
 .nav__dropdown-icon {
   .yesterday-page &--yesterday,
   .today-page &--today,
@@ -51,6 +56,9 @@
 .nav__dropdown-toggle.w-dropdown-toggle {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  &:focus-visible {
+    outline: 2px solid var(--color-black);
+  }
 }
 
 .nav__dropdown-list.w--open {
@@ -58,11 +66,23 @@
   margin-top: 0;
 }
 
+.nav__dropdown-link.w-dropdown-link:focus-visible {
+  outline: none;
+  box-shadow:
+    2px 2px 0 var(--color-black) inset,
+    -2px -2px 0 var(--color-black) inset;
+}
+
 .nav__link {
   text-underline-offset: 0.1em;
   text-decoration-thickness: 2px;
   transition: text-underline-offset 200ms ease-in-out;
-}
-.nav__link:hover {
-  text-underline-offset: 0.25em;
+
+  &:hover {
+    text-underline-offset: 0.25em;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-black);
+    outline-offset: 4px;
+  }
 }
