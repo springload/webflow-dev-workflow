@@ -18,6 +18,14 @@
       text-underline-offset: 0.1em;
     }
   }
+
+  &:focus {
+    outline: none;
+  }
+  &:focus .typing__text {
+    outline: 2px solid var(--color-black);
+    outline-offset: 2px;
+  }
 }
 
 .typing__text {
