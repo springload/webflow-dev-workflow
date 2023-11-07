@@ -1,3 +1,6 @@
+import React from "react";
+import { createRoot } from "react-dom/client";
+
 import heroHeadingAnimation from "./heroHeadingAnimation";
 import { typeTextOn } from "./typeTextOn";
 import {
@@ -8,7 +11,6 @@ import {
   CHANGING_TAGLINES_SELECTOR,
   FILTER_BUTTON_LIST_SELECTOR,
   CARD_LINK_SELECTOR,
-  BETTER_TOGETHER_CONTAINER_SELECTOR,
 } from "./selectors";
 import {
   onlyPlayWhenVisible,
@@ -19,11 +21,12 @@ import {
 import { ytdefer_setup } from "./ytdefer";
 import { createClientFilterButtons } from "./whoWeWorkWithFilter";
 import { setUpDropdownAnimations } from "./navDropdown";
+import { setUpTickerTapeLink } from "./tickerTapeLink";
 import { swapOutTaglines } from "./swapOutTaglines";
 import { setUpFilterButtons } from "./filterButtons";
 import { setUpImageAnimation } from "./cardImages";
-import { letterboxScroll } from "./betterTogether";
-import { setUpTickerTapeLink } from "./tickerTapeLink";
+
+import { JobsContainer } from "./js/JobsComponent";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (!prefersReducedMotion()) {
@@ -78,9 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     createClientFilterButtons();
   }
 
-  // on the 'Work with us' page, a section of text animates vertically within a container
-  if (document.querySelector(BETTER_TOGETHER_CONTAINER_SELECTOR)) {
-    letterboxScroll();
-    onlyPlayWhenVisible(BETTER_TOGETHER_CONTAINER_SELECTOR);
-  }
+  const root = createRoot(document.getElementById("react-root"));
+  root.render(<JobsContainer />);
 });
