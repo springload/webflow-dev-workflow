@@ -8,12 +8,13 @@ import {
   CHANGING_TAGLINES_SELECTOR,
   FILTER_BUTTON_LIST_SELECTOR,
   CARD_LINK_SELECTOR,
+  BETTER_TOGETHER_CONTAINER_SELECTOR,
 } from "./selectors";
 import {
   onlyPlayWhenVisible,
   pauseAnimations,
   resumeAnimations,
-  prefersReducedMotion
+  prefersReducedMotion,
 } from "./utils";
 import { ytdefer_setup } from "./ytdefer";
 import { createClientFilterButtons } from "./whoWeWorkWithFilter";
@@ -21,6 +22,7 @@ import { setUpDropdownAnimations } from "./navDropdown";
 import { swapOutTaglines } from "./swapOutTaglines";
 import { setUpFilterButtons } from "./filterButtons";
 import { setUpImageAnimation } from "./cardImages";
+import { letterboxScroll } from "./betterTogether";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (!prefersReducedMotion()) {
@@ -52,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setUpImageAnimation();
   }
 
-
   // typewriter effect (found on 'yesterday' and 'today' pages)
   if (document.querySelector(TYPING_LINK_SELECTOR)) {
     typeTextOn();
@@ -83,5 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3 buttons are set up to filter/display different categories of client logos
   if (document.querySelector(WHO_WE_WORK_WITH_SECTION_SELECTOR)) {
     createClientFilterButtons();
+  }
+
+  // on the 'Work with us' page, a section of text animates vertically within a container
+  if (document.querySelector(BETTER_TOGETHER_CONTAINER_SELECTOR)) {
+    letterboxScroll();
+    onlyPlayWhenVisible(BETTER_TOGETHER_CONTAINER_SELECTOR);
   }
 });
