@@ -1,0 +1,28 @@
+.jobs__ad {
+  text-decoration: none;
+  max-width: 100%;
+  display: inline-block;
+  padding-right: 28rem;
+}
+
+.jobs__job-header {
+  padding-bottom: 1rem;
+  color: #000;
+  font-family: Metric, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.jobs__job-subheader {
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  font-family: Metric, sans-serif;
+  font-size: 1.2rem;
+  color: #000;
+}
+
+.jobs__job-arrow {
+  margin-left: 1rem;
+}
