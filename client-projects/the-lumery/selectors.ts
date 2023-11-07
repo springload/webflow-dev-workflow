@@ -17,3 +17,5 @@ export const DROPDOWN_LINK_SELECTOR = ".nav__dropdown-link";
 export const CARD_LINK_SELECTOR = ".card__link";
 export const IMAGE_CONTAINER_SELECTOR = ".card__image-container";
 export const CARD_IMAGE_SELECTOR = ".card__image";
+export const BETTER_TOGETHER_CONTAINER_SELECTOR = ".better-together__container";
+export const BETTER_TOGETHER_LINE_SELECTOR = ".better-together__line";
