@@ -2,12 +2,12 @@ body,
 .page-wrapper {
   overflow-x: hidden;
 }
+
 .ticker-tape {
   display: inline-block;
   animation-name: scroll-ticker-tape;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-play-state: running;
   animation-duration: 120s;
 
   @include mobile-portrait-down {
@@ -21,21 +21,11 @@ body,
   }
 }
 
-.ticker-tape__text {
-  text-decoration-line: underline;
-  text-decoration-color: transparent;
-  text-decoration-thickness: 3px;
-
-  .ticker-tape__link:hover & {
-    --color-black: #1e1e1e;
-
-    color: var(--color-black);
-    text-decoration-color: var(--color-black);
-  }
+.ticker-tape__link:focus {
+  outline: none;
 }
-
-.ticker-tape__link:hover .reduced-motion {
-  text-decoration-line: underline;
-  text-decoration-color: var(--color-black);
-  text-decoration-thickness: 3px;
+.ticker-tape__link:focus .ticker-tape,
+.ticker-tape__link:focus .ticker-tape__text--static {
+  outline-offset: 2px;
+  outline: 2px solid var(--color-purple-light);
 }
