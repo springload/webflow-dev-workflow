@@ -7,7 +7,7 @@
 
 .jobs__job-header {
   padding-bottom: 1rem;
-  color: #000;
+  color: var(--color-black);
   font-family: Metric, sans-serif;
   font-size: 3rem;
   font-weight: 700;
@@ -20,7 +20,7 @@
   display: flex;
   font-family: Metric, sans-serif;
   font-size: 1.2rem;
-  color: #000;
+  color: var(--color-black);
 }
 
 .jobs__job-arrow {

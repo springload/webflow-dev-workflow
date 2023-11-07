@@ -21,6 +21,7 @@ import {
 import { ytdefer_setup } from "./ytdefer";
 import { createClientFilterButtons } from "./whoWeWorkWithFilter";
 import { setUpDropdownAnimations } from "./navDropdown";
+import { setUpTickerTapeLink } from "./tickerTapeLink";
 import { swapOutTaglines } from "./swapOutTaglines";
 import { setUpFilterButtons } from "./filterButtons";
 import { setUpImageAnimation } from "./cardImages";
@@ -64,17 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ticker tape effect (CSS animation, found on 'yesterday' and 'tomorrow' pages)
-  const tickerTapeLink = document.querySelector(TICKER_TAPE_SELECTOR);
-  if (tickerTapeLink) {
-    onlyPlayWhenVisible(TICKER_TAPE_SELECTOR);
-
-    // the ticker tape should pause on hover
-    tickerTapeLink?.addEventListener("mouseover", () =>
-      pauseAnimations(TICKER_TAPE_SELECTOR),
-    );
-    tickerTapeLink?.addEventListener("mouseout", () =>
-      resumeAnimations(TICKER_TAPE_SELECTOR),
-    );
+  if (document.querySelector(TICKER_TAPE_SELECTOR)) {
+    setUpTickerTapeLink();
   }
 
   // ytdefer is an alternative to loading the 2.5MB base.js from the standard YouTube embed
