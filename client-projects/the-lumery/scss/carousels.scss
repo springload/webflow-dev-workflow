@@ -127,6 +127,6 @@
 
 .slider__arrow--right--todays-plan {
   right: unset;
-  left: calc(100vw - var(--arrow-size) - 1rem);
+  left: calc(100% - var(--arrow-size) - 1rem);
   top: -5rem;
 }
