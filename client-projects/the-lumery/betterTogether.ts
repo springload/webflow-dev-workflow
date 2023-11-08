@@ -29,7 +29,7 @@ export function letterboxScroll() {
   lines.forEach((line, index) => {
     line.animate(keyframes, {
       duration: duration,
-      delay: (duration / lines.length) * index,
+      delay: (duration / lines.length) * index * 2,
       iterations: Infinity,
       fill: "both",
     });
