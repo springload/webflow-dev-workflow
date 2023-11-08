@@ -11,6 +11,7 @@ import {
   CHANGING_TAGLINES_SELECTOR,
   FILTER_BUTTON_LIST_SELECTOR,
   CARD_LINK_SELECTOR,
+  BETTER_TOGETHER_CONTAINER_SELECTOR,
 } from "./selectors";
 import {
   onlyPlayWhenVisible,
@@ -27,6 +28,7 @@ import { setUpFilterButtons } from "./filterButtons";
 import { setUpImageAnimation } from "./cardImages";
 
 import { JobsContainer } from "./js/JobsComponent";
+import { letterboxScroll } from "./betterTogether";
 
 document.addEventListener("DOMContentLoaded", () => {
   if (!prefersReducedMotion()) {
@@ -79,6 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // 3 buttons are set up to filter/display different categories of client logos
   if (document.querySelector(WHO_WE_WORK_WITH_SECTION_SELECTOR)) {
     createClientFilterButtons();
+  }
+
+  if (document.querySelector(BETTER_TOGETHER_CONTAINER_SELECTOR)) {
+    letterboxScroll();
+    onlyPlayWhenVisible(BETTER_TOGETHER_CONTAINER_SELECTOR);
   }
 
   const root = createRoot(document.getElementById("react-root"));
