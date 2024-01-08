@@ -63,15 +63,20 @@ function animateImageIn(
     easing: "ease-out",
     fill: "both" as FillMode,
   };
-
-  if (!prefersReducedMotion()) {
-    image.animate(
-      [{ transform: "translateY(20%)" }, { transform: "translateY(0)" }],
-      options,
-    );
+  const isAnimating = image.classList.contains("animating");
+  if (!prefersReducedMotion() && !isAnimating) {
+    image.classList.add("animating");
+    image
+      .animate(
+        [{ transform: "translateY(20%)" }, { transform: "translateY(0)" }],
+        options,
+      )
+      .finished.then(() => image.classList.remove("animating"));
   }
 
-  imageContainer.animate([{ opacity: 0 }, { opacity: 1 }], options);
+  if (!isAnimating) {
+    imageContainer.animate([{ opacity: 0 }, { opacity: 1 }], options);
+  }
 }
 
 function resetImage(image: HTMLImageElement, imageContainer: HTMLDivElement) {
