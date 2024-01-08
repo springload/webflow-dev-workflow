@@ -88,6 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
     onlyPlayWhenVisible(BETTER_TOGETHER_CONTAINER_SELECTOR);
   }
 
-  const root = createRoot(document.getElementById("react-root"));
+  const root = createRoot(document.getElementById("jobs-component-root"));
   root.render(<JobsContainer />);
 });
