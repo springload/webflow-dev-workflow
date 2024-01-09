@@ -17,7 +17,7 @@ export function letterboxScroll() {
     throw new Error(`No line elements found: ${BETTER_TOGETHER_LINE_SELECTOR}`);
   }
 
-  const duration = 10000;
+  const duration = 8000;
   const maxLineHeight = Math.max(...lines.map((line) => line.clientHeight));
   const totalDistance = container.clientHeight + maxLineHeight;
 
