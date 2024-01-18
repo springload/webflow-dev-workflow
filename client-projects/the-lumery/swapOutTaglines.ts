@@ -31,23 +31,21 @@ export function swapOutTaglines() {
     {
       offset: 0,
       transform: "translateY(100%)",
-      filter: "blur(2px)",
       easing: "cubic-bezier(.26,.39,.31,1)",
     },
     { offset: 0, opacity: 0, easing: "linear" },
-    { offset: 1, transform: "translateY(0)", filter: "blur(0)" },
+    { offset: 1, transform: "translateY(0)" },
     { offset: 1, opacity: 1 },
   ];
   const slideOutkeyframes = [
     {
       offset: 0,
       transform: "translateY(0)",
-      filter: "blur(0)",
       easing: "cubic-bezier(.69,.1,.74,.61)",
     },
     { offset: 0, opacity: 1, easing: "linear" },
     { offset: 0.75, opacity: 0 },
-    { offset: 1, transform: "translateY(-100%)", filter: "blur(2px)" },
+    { offset: 1, transform: "translateY(-100%)" },
     { offset: 1, opacity: 0 },
   ];
   const fadeInKeyframes = [
