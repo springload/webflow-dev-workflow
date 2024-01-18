@@ -36,15 +36,7 @@ function addObserver(image: HTMLImageElement, imageContainer: HTMLDivElement) {
       }
     });
   });
-  const cardExit = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        resetImage(image, imageContainer);
-      }
-    });
-  });
   cardEnter.observe(image);
-  cardExit.observe(image);
 }
 
 function animateImageIn(
@@ -56,28 +48,18 @@ function animateImageIn(
     easing: "ease-out",
     fill: "both" as FillMode,
   };
-  const isAnimating = image.classList.contains("animating");
-  if (!prefersReducedMotion() && !isAnimating) {
-    image.classList.add("animating");
-    image
-      .animate(
-        [{ transform: "translateY(20%)" }, { transform: "translateY(0)" }],
-        options,
-      )
-      .finished.then(() => image.classList.remove("animating"));
+  const hasLoaded = image.classList.contains("loaded");
+  if (!prefersReducedMotion() && !hasLoaded) {
+    image.animate(
+      [{ transform: "translateY(20%)" }, { transform: "translateY(0)" }],
+      options,
+    );
   }
 
-  if (!isAnimating) {
+  if (!hasLoaded) {
+    image.classList.add("loaded");
     imageContainer.animate([{ opacity: 0 }, { opacity: 1 }], options);
   }
-}
-
-function resetImage(image: HTMLImageElement, imageContainer: HTMLDivElement) {
-  if (!prefersReducedMotion()) {
-    image.style.transform = "translateY(20%)";
-  }
-
-  imageContainer.style.opacity = "0";
 }
 
 function zoomIn(image: HTMLImageElement) {
