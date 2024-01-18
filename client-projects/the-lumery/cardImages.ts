@@ -29,20 +29,13 @@ export function setUpImageAnimation() {
 }
 
 function addObserver(image: HTMLImageElement, imageContainer: HTMLDivElement) {
-  const cardEnter = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateImageIn(image, imageContainer);
-        }
-      });
-    },
-    {
-      // delays the animation until the image is 20% into the viewport —
-      // this prevents a nasty flicker effect, particularly on mobile devices.
-      threshold: 0.2,
-    },
-  );
+  const cardEnter = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateImageIn(image, imageContainer);
+      }
+    });
+  });
   const cardExit = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) {
