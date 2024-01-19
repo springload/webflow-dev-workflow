@@ -89,16 +89,22 @@ document.addEventListener("DOMContentLoaded", () => {
     onlyPlayWhenVisible(BETTER_TOGETHER_CONTAINER_SELECTOR);
   }
 
-  const jobsRoot = createRoot(document.getElementById("jobs-component-root"));
-  jobsRoot.render(<JobsContainer />);
+  if (document.getElementById("jobs-component-root")) {
+    const jobsRoot = createRoot(document.getElementById("jobs-component-root"));
+    jobsRoot.render(<JobsContainer />);
+  }
 
-  const contactFormRoot = createRoot(
-    document.getElementById("form-contact-component-root"),
-  );
-  contactFormRoot.render(<FormComponent contactForm />);
+  if (document.getElementById("form-contact-component-root")) {
+    const contactFormRoot = createRoot(
+      document.getElementById("form-contact-component-root"),
+    );
+    contactFormRoot.render(<FormComponent contactForm />);
+  }
 
-  const careersFormRoot = createRoot(
-    document.getElementById("form-careers-component-root"),
-  );
-  careersFormRoot.render(<FormComponent careersForm />);
+  if (document.getElementById("form-careers-component-root")) {
+    const careersFormRoot = createRoot(
+      document.getElementById("form-careers-component-root"),
+    );
+    careersFormRoot.render(<FormComponent careersForm />);
+  }
 });
