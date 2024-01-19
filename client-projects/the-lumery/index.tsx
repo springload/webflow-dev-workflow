@@ -28,6 +28,7 @@ import { setUpFilterButtons } from "./filterButtons";
 import { setUpImageAnimation } from "./cardImages";
 
 import { JobsContainer } from "./js/JobsComponent";
+import FormComponent from "./js/FormComponent";
 import { letterboxScroll } from "./betterTogether";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -88,6 +89,16 @@ document.addEventListener("DOMContentLoaded", () => {
     onlyPlayWhenVisible(BETTER_TOGETHER_CONTAINER_SELECTOR);
   }
 
-  const root = createRoot(document.getElementById("jobs-component-root"));
-  root.render(<JobsContainer />);
+  const jobsRoot = createRoot(document.getElementById("jobs-component-root"));
+  jobsRoot.render(<JobsContainer />);
+
+  const contactFormRoot = createRoot(
+    document.getElementById("form-contact-component-root"),
+  );
+  contactFormRoot.render(<FormComponent contactForm />);
+
+  const careersFormRoot = createRoot(
+    document.getElementById("form-careers-component-root"),
+  );
+  careersFormRoot.render(<FormComponent careersForm />);
 });
