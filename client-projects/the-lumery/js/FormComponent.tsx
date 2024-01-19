@@ -89,22 +89,22 @@ const FormComponent = ({
     }
   };
 
+  const formTitle = contactForm
+    ? "Let`s talk business"
+    : careersForm
+    ? "Let`s talk now"
+    : "Let`s talk";
+
   return (
-    <div className="form--work-with-us w-form">
-      <form
-        id="wf-form-Work-with-us"
-        name="wf-form-Work-with-us"
-        className="form"
-        aria-label="Work with us"
-        onSubmit={handleSubmit}
-      >
+    <div className="w-form">
+      <form className="form" aria-label="Work with us" onSubmit={handleSubmit}>
         <div
           className="g-recaptcha"
           data-size="invisible"
           data-sitekey="6Lf4_sEUAAAAABsLO0JpoQS7cD_KsIdEv1AHyx96"
           data-callback="submitContactForm"
         ></div>
-        <h2 className="lets-talk__heading">Let's talk business</h2>
+        <h2 className="lets-talk__heading">{formTitle}</h2>
         <div className="lets-talk__grid">
           <div className="text-field">
             <div className="form-label">
@@ -348,14 +348,25 @@ const FormComponent = ({
         <div className="submit-container">
           <input
             type="submit"
-            data-wait="Please wait..."
-            className="button button--submit screenreader-only w-button"
+            id="w-node-_11da1ed0-b7b8-16c6-20be-09918134b533-f9a95c4c"
+            className="button button--submit w-button"
             value="Submit"
           />
-          <div className="fake-button-container">
+          <div
+            id="w-node-_11da1ed0-b7b8-16c6-20be-09918134b534-f9a95c4c"
+            className="fake-button-container"
+          >
             <div aria-hidden="true" className="fake-button btn">
-              <div className="btn__bg btn__bg--primary"></div>
-              <div className="btn__text btn__text--primary">Submit</div>
+              <div
+                id="w-node-_83373c2e-5001-461c-cb58-342665ef556c-65ef556b"
+                className="btn__bg btn__bg--primary"
+              ></div>
+              <div
+                id="w-node-_83373c2e-5001-461c-cb58-342665ef556d-65ef556b"
+                className="btn__text btn__text--primary"
+              >
+                {formStatus.loading ? "Please wait..." : "Submit"}
+              </div>
             </div>
           </div>
         </div>

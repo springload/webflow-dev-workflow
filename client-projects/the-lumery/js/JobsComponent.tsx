@@ -38,7 +38,7 @@ const JobsDisplay = (isLoading: boolean, jobJson: Job[]) => {
           {jobJson.length == 0 ? (
             <p>We couldn't load the available jobs, please check back later.</p>
           ) : (
-            <ul class="jobs__list">
+            <ul className="jobs__list">
               {jobJson.map((job) => (
                 <li className="jobs__ad" key={job.link}>
                   <a className="jobs__job-link" href={job.link}>
