@@ -20,6 +20,10 @@
 
 .jobs__job-link {
   text-decoration: none;
+
+  &:hover .jobs__job-header {
+    text-decoration: underline;
+  }
 }
 
 .jobs__job-header {

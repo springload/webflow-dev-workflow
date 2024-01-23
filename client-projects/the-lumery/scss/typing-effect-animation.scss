@@ -12,6 +12,7 @@
   }
 
   &:hover {
+    text-decoration: none;
     .char,
     .whitespace {
       text-decoration: underline 2px;
@@ -23,6 +24,10 @@
     outline: none;
   }
   &:focus .typing__text {
+    outline: none;
+  }
+
+  .typing__link:focus-visible .typing__text {
     outline: 2px solid var(--color-black);
     outline-offset: 2px;
   }

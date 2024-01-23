@@ -123,7 +123,7 @@
   font-size: 1.25rem;
   line-height: 1.25;
   @include mobile-portrait-down {
-    font-size: 1rem;
+    font-size: var(--body-large-mobile);
   }
 }
 
@@ -159,6 +159,21 @@
   @include mobile-portrait-down {
     flex-basis: calc(50% - 0.75rem);
   }
+}
+
+.filter__button-list .btn__text {
+  @include mobile-portrait-down {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+.btn__text {
+  font-size: var(--body-large-mobile);
+}
+
+.filter__button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 // overwrite secret Webflow 'w-' styles

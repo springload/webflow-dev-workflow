@@ -12,11 +12,14 @@
   .hero--primary & {
     font-size: 10.625rem;
 
+    @include tablet-down {
+      font-size: 8.5rem;
+    }
     @include mobile-landscape-down {
       font-size: 6rem;
     }
     @include mobile-portrait-down {
-      font-size: 4.25rem;
+      font-size: 3.125rem;
     }
   }
 
@@ -27,8 +30,26 @@
       font-size: 5rem;
     }
     @include mobile-portrait-down {
-      font-size: 3.5rem;
+      font-size: 3.125rem;
     }
+  }
+}
+
+.hero--secondary {
+  @include mobile-portrait-down {
+    min-height: 444px;
+    display: flex;
+    flex-direction: column-reverse;
+
+    & .animated-hero-heading {
+      min-height: unset;
+    }
+  }
+}
+
+.hero--buttons .hero__intro {
+  @include mobile-portrait-down {
+    padding-bottom: 0;
   }
 }
 
