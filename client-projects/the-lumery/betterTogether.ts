@@ -16,10 +16,11 @@ export function letterboxScroll() {
   if (!lines.length) {
     throw new Error(`No line elements found: ${BETTER_TOGETHER_LINE_SELECTOR}`);
   }
-
+  const mobileMediaQuery = window.matchMedia("(max-width: 767px)");
+  const spacing = mobileMediaQuery.matches ? 0.5 : 0.9;
   const duration = 8000;
   const maxLineHeight = Math.max(...lines.map((line) => line.clientHeight));
-  const totalDistance = container.clientHeight + maxLineHeight;
+  const totalDistance = container.clientHeight + maxLineHeight * spacing;
 
   const keyframes = [
     { transform: `translateY(${totalDistance}px)` },
