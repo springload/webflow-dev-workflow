@@ -20,14 +20,12 @@
     }
   }
 
-  &:focus {
-    outline: none;
-  }
+  &:focus,
   &:focus .typing__text {
     outline: none;
   }
 
-  .typing__link:focus-visible .typing__text {
+  &:focus-visible .typing__text {
     outline: 2px solid var(--color-black);
     outline-offset: 2px;
   }
