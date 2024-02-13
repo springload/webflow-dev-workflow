@@ -41,7 +41,7 @@ const FormComponent = ({
     return () => {
       delete window["submitContactForm"];
     };
-  }, []);
+  }, [formData]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -57,7 +57,8 @@ const FormComponent = ({
     if (
       recaptchaLoaded &&
       (window.location.hostname == "www.thelumery.com" ||
-        window.location.hostname == "thelumery.com")
+        window.location.hostname == "thelumery.com" ||
+        window.location.hostname == "the-lumery-staging.webflow.io")
     ) {
       window["grecaptcha"].execute();
     } else {
@@ -72,13 +73,18 @@ const FormComponent = ({
       ? "https://tlmw-external.azurewebsites.net/api/WorkForUsFromTrigger?code=mCZ2_bPktS1K1qBQCw6BBOraSwoDu4uncxbe6nHRFg9LAzFuCEDigA=="
       : "";
 
+    const recaptchaToken = window["grecaptcha"].getResponse();
+
     try {
       const response = await fetch(formApi, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          "g-recaptcha-response": recaptchaToken,
+        }),
       });
 
       if (response.ok) {
