@@ -66,17 +66,20 @@ const FormComponent = ({
   };
 
   const submitContactForm = async () => {
+    const formApi = contactForm
+      ? "https://tlmw-external.azurewebsites.net/api/WorkWithUsFromTrigger?code=QiLBHJW-xO1vMyjRdBPIiK9TLT034Mh6tZtPBrzmVGHMAzFusPcLbw=="
+      : careersForm
+      ? "https://tlmw-external.azurewebsites.net/api/WorkForUsFromTrigger?code=mCZ2_bPktS1K1qBQCw6BBOraSwoDu4uncxbe6nHRFg9LAzFuCEDigA=="
+      : "";
+
     try {
-      const response = await fetch(
-        "https://thelumerymiddlewarefunctionsexternal.azurewebsites.net/api/ContactPost?code=6Ncw7Eg4rubP4tDnaSsaXgDpuA3ffxdRyVbj5Jk2JIdkOZ/EPfYhGA==",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+      const response = await fetch(formApi, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify(formData),
+      });
 
       if (response.ok) {
         setFormStatus({ loading: false, submitted: true, error: false });
@@ -90,13 +93,13 @@ const FormComponent = ({
   };
 
   const formTitle = contactForm
-    ? "Let`s talk business"
+    ? "Let's talk business"
     : careersForm
-    ? "Let`s talk now"
-    : "Let`s talk";
+    ? "Let's talk now"
+    : "Let's talk";
 
   return (
-    <div className="w-form">
+    <div className="form--work-with-us w-form">
       <form className="form" aria-label="Work with us" onSubmit={handleSubmit}>
         <div
           className="g-recaptcha"
