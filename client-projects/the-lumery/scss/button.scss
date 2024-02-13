@@ -146,6 +146,7 @@
 // parents or siblings) so they should be removed here too.
 .fake-button-container {
   pointer-events: none;
+  position: absolute;
 }
 
 // filter buttons on the Projects page
