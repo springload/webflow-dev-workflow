@@ -54,12 +54,7 @@ const FormComponent = ({
 
     setFormStatus({ loading: true, submitted: false, error: false });
 
-    if (
-      recaptchaLoaded &&
-      (window.location.hostname == "www.thelumery.com" ||
-        window.location.hostname == "thelumery.com" ||
-        window.location.hostname == "the-lumery-staging.webflow.io")
-    ) {
+    if (recaptchaLoaded) {
       window["grecaptcha"].execute();
     } else {
       submitContactForm();
