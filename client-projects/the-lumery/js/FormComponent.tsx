@@ -88,7 +88,6 @@ const FormComponent = ({
         throw new Error("Submission failed");
       }
     } catch (error) {
-      console.error(error);
       setFormStatus({ loading: false, submitted: false, error: true });
     }
   };
@@ -349,31 +348,33 @@ const FormComponent = ({
             Your message
           </div>
         </div>
-        <div className="submit-container">
-          <input
-            type="submit"
-            id="w-node-_11da1ed0-b7b8-16c6-20be-09918134b533-f9a95c4c"
-            className="button button--submit w-button"
-            value="Submit"
-          />
-          <div
-            id="w-node-_11da1ed0-b7b8-16c6-20be-09918134b534-f9a95c4c"
-            className="fake-button-container"
-          >
-            <div aria-hidden="true" className="fake-button btn">
-              <div
-                id="w-node-_83373c2e-5001-461c-cb58-342665ef556c-65ef556b"
-                className="btn__bg btn__bg--primary"
-              ></div>
-              <div
-                id="w-node-_83373c2e-5001-461c-cb58-342665ef556d-65ef556b"
-                className="btn__text btn__text--primary"
-              >
-                {formStatus.loading ? "Please wait..." : "Submit"}
+        {!formStatus.submitted && (
+          <div className="submit-container">
+            <input
+              type="submit"
+              id="w-node-_11da1ed0-b7b8-16c6-20be-09918134b533-f9a95c4c"
+              className="button button--submit w-button"
+              value="Submit"
+            />
+            <div
+              id="w-node-_11da1ed0-b7b8-16c6-20be-09918134b534-f9a95c4c"
+              className="fake-button-container"
+            >
+              <div aria-hidden="true" className="fake-button btn">
+                <div
+                  id="w-node-_83373c2e-5001-461c-cb58-342665ef556c-65ef556b"
+                  className="btn__bg btn__bg--primary"
+                ></div>
+                <div
+                  id="w-node-_83373c2e-5001-461c-cb58-342665ef556d-65ef556b"
+                  className="btn__text btn__text--primary"
+                >
+                  {formStatus.loading ? "Please wait..." : "Submit"}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </form>
       {formStatus.submitted && (
         <div
